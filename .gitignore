@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Generated model artifacts and reports
+*.pkl
+*.joblib
+models/
+outputs/
+reports/generated/
+
+# OS and editor files
+.DS_Store
+.vscode/
+.idea/
