@@ -1,114 +1,22 @@
-## 📈 Stock Price Prediction Pipeline using AWS S3, Glue, Athena, Google Colab, and Power BI
-This project demonstrates a cloud-integrated machine learning pipeline that forecasts Apple Inc. (AAPL) stock prices using an LSTM model. It leverages AWS services for data storage and cataloging, Google Colab for model training, and Power BI for visualization.
+# Stock Price Prediction Pipeline
 
-## ✅ Project Overview
-⏳ Data: Historical AAPL stock data (aaplcsv.csv)
+A cloud-integrated educational pipeline for historical AAPL market-data analysis using **Amazon S3, AWS Glue, Athena, Google Colab, LSTM forecasting, and Power BI**.
 
-🪣 Storage: Amazon S3 bucket
+## Architecture
 
-🛡️ Access: AWS IAM role with S3 and Glue permissions
+Historical data is stored and catalogued through cloud analytics services, queried for analysis, used in an LSTM experiment, and presented in a business-intelligence dashboard. The repository demonstrates how data engineering, machine learning, and visual storytelling fit together.
 
-🧪 ETL: AWS Glue Crawler to create table in Glue Data Catalog
+## Repository contents
 
-🔎 Querying: AWS Athena to explore and export data
+- `README.md` — workflow, assumptions, and responsible-use guidance.
+- `Stock_Prediction_Pipeline-Results.png` — example visual output.
+- `aaplcsv - Sheet1.csv` — sample historical data artifact; verify provenance and licensing before redistribution.
+- `stock_prediction_visuals_powerBI.pbix` — Power BI report artifact.
 
-🤖 Modeling: LSTM time-series forecasting in Google Colab
+## Cloud safety
 
-📊 Visualization: Interactive Power BI dashboard
+Never commit AWS access keys, IAM secrets, private bucket names, or customer data. Prefer least-privilege roles, environment variables, and an `.env.example` file containing placeholders only.
 
-## 📁 Dataset Details
-File: aaplcsv.csv
+## Interpretation
 
-Source: Historical data from Yahoo Finance
-
-Fields: Date, Open, High, Low, Close, Adj Close, Volume
-
-Stored in: s3://vidhi_stockvision_data/aaplcsv.csv
-
-## 🛠️ AWS Configuration
-🔐 IAM Role
-Created IAM role with policies:
-
-AmazonS3FullAccess
-
-AWSGlueServiceRole
-
-
-🪣 S3 Bucket
-Uploaded aaplcsv.csv to S3
-
-Folder path: s3://your-bucket-name/aaplcsv.csv
-
-🧬 AWS Glue
-Created a Crawler to scan the S3 path
-
-Generated a Glue table named aaplcsv in database stockvision_db
-
-🔎 Athena Query (Query Editor v2)
-sql
-Copy
-Edit
-SELECT * FROM stockvision_db.aaplcsv
-ORDER BY date ASC
-LIMIT 10;
-Ensured data is chronologically ordered for time-series modeling
-
-Previewed data to validate Glue schema
-
-Exported output as CSV for model training
-
-🤖 LSTM Model Training in Google Colab
-Loaded and normalized Close price data
-
-Split into training and test sets
-
-Created sequences using a 60-day sliding window
-
-Trained an LSTM model using TensorFlow/Keras
-
-📊 Power BI Dashboard
-Created a Power BI report with:
-
-📈 Actual vs Predicted Close Prices (Line Chart)
-
-📉 Moving Average Trends
-
-📊 Daily Volume Analysis
-
-✅ Interactive filters by Date Range
-
-🔗 (Add screenshots or .pbix download link here)
-
-## 📦 Project Structure
-graphql
-Copy
-Edit
-├── data/
-│   └── aaplcsv.csv                # Raw data from Yahoo Finance
-├── colab_notebooks/
-│   └── stock_lstm_model.ipynb     # LSTM training and predictions
-├── powerbi/
-│   └── aapl_dashboard.pbix        # Power BI report file
-├── aws/
-│   ├── glue_crawler_config.txt    # Crawler settings
-│   └── athena_query.sql           # SQL scripts
-└── README.md                      # Project overview
-
-## 🎯 Key Takeaways
-🔗 Seamless integration of AWS S3, Glue, and Athena
-
-🔁 End-to-end ETL + ML + BI workflow
-
-📡 Scalable and modular pipeline
-
-📚 Strong demonstration of cloud + data science skills
-
-## 👩‍💻 Author
-Vidhi Mistry
-vidhimistry292@gmail.com
-
-## 📄 License
-This project is released under the MIT License.
-
-
-
+Market forecasts are uncertain and sensitive to lookback windows, leakage, regime changes, and evaluation design. Outputs are educational research, not investment advice or a trading recommendation.
